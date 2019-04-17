@@ -1,3 +1,5 @@
+# show-ticket app use cases
+
 - Can I call ticketsAvailable()
 - Continuosly run as long as there are tickets available
 - Let the user know when tickets are sold out
