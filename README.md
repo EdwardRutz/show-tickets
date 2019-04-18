@@ -1,5 +1,13 @@
 # show-tickets
-Basic Python demo
+
+Python demo of the basics: 
+- Input and Output
+- Data Types and Branching
+- Functions and Looping
+  - While, For loops
+- Exception Handling
+- Math library
+- TDD with Pytest
 
 
 

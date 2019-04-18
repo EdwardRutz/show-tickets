@@ -1,3 +1,5 @@
+# Demo functions, math library and exceptions
+
 import math
 
 def split_check(total, number_of_people):
