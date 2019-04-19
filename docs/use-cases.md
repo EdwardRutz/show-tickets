@@ -19,3 +19,7 @@
   - Then reduce the number of tickets remaining by the number of tickets sold. 
   - Otherwise...thank them by name
 
+
+- Handle negative numbers for number_of_tickets
+- Exit program when "N" is selected
+

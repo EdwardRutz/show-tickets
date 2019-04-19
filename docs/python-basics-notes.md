@@ -1,12 +1,46 @@
 # Python Basics
 
+
+4/19/19, Updated notes with code anywhere
+
+------------------------------------------------
+## Review
+
+- What are the data types in Python?
+- What is the order of math operations?
+- What is the customary indent size in Python?
+------------------------------------------------
+
+## Skills
+
+- Input and Output
+- Conditional Branching
+- math module
+- Exception handling
+- Looping
+- Functions
+
+
 ## Types and Branching
 
-- Numeric, String, Boolean
+- Numeric, Boolean, String 
+Numeric Types: int, float, complex
+Sequence Types: list, tuple, range
+Text Sequence Type: str
+Binary Sequence Types: bytes, bytearray, memoryview
+Set Types: set, frozenset
+Mapping Types: — dict
+Other Built-in Types:
+  - Modules, Classes and Class Instances, Functions, Methods, Code Objects, Type Objects, 
+  - the Null Object (None), the Ellipsis Object, the NotImplemented Object, 
+  - Boolean Values (True and False), Internal Objects.
+  
+- https://docs.python.org/3/library/stdtypes.html
+
 
 ### Numeric
 
-- In the REPL, the underscore (_) temporarily stores the result of the previous calculation
+- In the Python REPL, the underscore (_) temporarily stores the result of the previous calculation
 - round(_)
 - Order of opporations: PEMDAS, "Please Excuse My Dear Aunt Sally"
   - Parenthesis, Exponents, Multiplication, Division, Addition, Subtraction
@@ -48,14 +82,6 @@ if favorite_color == "blue":
 ```
 
 
-
-
-
-
-
-
-
-
 ## Functions and Looping
 
 - Use Agile, create user stories, add stories to a Kanban board
@@ -79,7 +105,7 @@ return math.ceil(total / number_of_people)
 - The refactored version doesn't seem as clear and explicit as the original
 - The variable, cost_per_person, clearly identifies what the expression does.
 
-## Exceptions
+## Exception Handling
 
 ### Raise an Exception
 
@@ -93,6 +119,8 @@ def split_check(total, number_of_people):
 
 ### Try-Except-Else Block
 
+- A common problem that occurs when programs receive input from a user is a coercion error. 
+- The user provides data that is unable to be coerced.
 - Put any code that might be problematic in a "try" block
 - Add a try statement, `try: `
 
@@ -118,13 +146,109 @@ def suggest(product_idea):
     return product_idea + "inator"
 ```
 
+### While Loops
+
+- Condition based looping. While this condition is true run this code.
+
+```
+# secret-code-checker.pytest
+
+import sys
+
+# while loop demo
+
+MASTER_SECRET_CODE = opensesame
+secret_code = input("Enter secret code?")
+attempt_count = 1
+while secret_code != 'MASTER_SECRET_CODE':
+    if attempt_count >3:
+        sys.exit("Too many invalid password attempts.")
+    secret_code = input("Invalid secret code, try again...")
+    attempt_count += 1
+print("Welcome to secret town")
+```
+
+- Exit program with  an error, import `sys` and use `sys.exit`
+	- ie, `sys.exit("Too many invalid password attempts.")`
+
+
+# For Loops
+
+- Interating through a set of values
+
+```
+banner = "Happy Birthday!"
+for letter in banner
+	print(letter.upper())
+	
+```
+
+
+```
+for letter in "You got this!":
+    if letter in "oh":
+        print(letter)	# ooh
+
+```
+
+
+
+
+
+
 
 ## Creating an App
 
+```python
 
+# App to sell tickets.
+
+import math
+
+TICKET_PRICE = 10
+SERVICE_CHARGE = 2
+
+tickets_remaining = 100
+
+# Create the calculate_price function
+# returns number_of_tickets * price
+
+def calculate_price(number_of_tickets):
+    total_price = (TICKET_PRICE * number_of_tickets) + SERVICE_CHARGE
+    return total_price
+
+while tickets_remaining >= 1:
+    print("There are {} tickets remaining.".format(tickets_remaining))
+    name = input("What is your name?  ")
+    number_of_tickets = input("Hi {}, how many tickets do you want?  "
+                              .format(name))
+    try:
+        number_of_tickets = int(number_of_tickets)
+        if number_of_tickets > tickets_remaining:
+            raise ValueError("Sorry, only {} tickets remaining".format(tickets_remaining))
+    except ValueError as err:
+        print("Oops, ran into an issue. {} Try again.".format(err))
+    else:
+        amount_due = calculate_price(number_of_tickets)
+        print("Your total price is ${}".format(amount_due))  
+        confirm_purchase = input("Do you want to continue and " + 
+                                 "purchase tickets? Type Y or N  ")
+        if confirm_purchase.lower() == "y":
+            # TODO: Get credit card information and process purchase
+            print("Sold! Thanks for shopping with us {}".format(name))
+            tickets_remaining = tickets_remaining - number_of_tickets
+        else:
+            print("Thanks for shopping with us and have a nice day {}".format(name))       
+print("The tickets are sold out!")
+ 
+```
 
 
 ------------------------------------------------
+## Python Style Guide
+
+- Use all caps for constant variables
+
 
 ## Pytest
 
